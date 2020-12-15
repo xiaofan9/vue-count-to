@@ -1,0 +1,6 @@
+src/assets/
+src/mock
+public
+*.d.ts
+build
+tsconfig.json
