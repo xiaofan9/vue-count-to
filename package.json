@@ -1,9 +1,9 @@
 {
   "name": "vue3-count-to",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "vue-count-to 支持vue2、vue3版本",
-  "main": "dist/vue-count-to.js",
-  "module": "dist/vue-count-to.js",
+  "main": "dist/count-to.js",
+  "module": "dist/count-to.js",
   "typings": "types/index.d.ts",
   "scripts": {
     "build": "node ./build/build.js"
@@ -62,5 +62,5 @@
     "types"
   ],
   "homepage": "https://github.com/xiaofan9/vue-count-to#readme",
-  "unpkg": "dist/vue-count-to.js"
+  "unpkg": "dist/count-to.js"
 }
