@@ -6,9 +6,7 @@
   "module": "dist/vue-count-to.js",
   "typings": "types/index.d.ts",
   "scripts": {
-    "build": "node ./build/build.js",
-    "publish": "npm run build && gulp",
-    "lint": "vue-cli-service lint"
+    "build": "node ./build/build.js"
   },
   "peerDependencies": {
     "vue": ">= 2 < 4"
@@ -34,9 +32,6 @@
     "babel-loader": "^8.2.2",
     "eslint": "^7.15.0",
     "eslint-plugin-vue": "^7.2.0",
-    "gulp": "^4.0.2",
-    "gulp-clean": "^0.4.0",
-    "gulp-json-editor": "^2.5.4",
     "ora": "^5.1.0",
     "rimraf": "^3.0.2",
     "terser-webpack-plugin": "^5.0.3",
@@ -52,7 +47,7 @@
   },
   "author": "sifan",
   "keywords": [
-    "Vue",
+    "vue",
     "component",
     "vue-count-to",
     "vue3-count-to"
