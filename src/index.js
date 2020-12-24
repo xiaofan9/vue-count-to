@@ -1,18 +1,22 @@
-import countTo3 from './CountTo.vue';
-import countTo from 'vue-count-to';
+import CountTo3 from "./count-to";
+import pkg from "../package.json";
+import { cjsToEs } from './utils';
+import Vue from "vue";
 
+let CountTo;
+
+if (!Vue) {
+  CountTo = CountTo3;
+} else {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  CountTo = cjsToEs(require("vue-count-to"))();
+}
+
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 function install(app) {
-  if(typeof app === 'function') {
-    app.component('count-to', countTo);
-  } else {
-    app.component('count-to', countTo3);
-  }
+  app.component("count-to", CountTo);
 }
 
-export default {
-  install
-}
+export default { install, version: pkg.version };
 
-if (typeof window !== 'undefined' && window.Vue) {
-  install(window.Vue);
-}
+export { CountTo };

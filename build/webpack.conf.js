@@ -2,11 +2,15 @@ const path = require('path');
 const { VueLoaderPlugin } = require('vue-loader');
 const TerserPlugin = require('terser-webpack-plugin');
 const config = require('./config');
+const pkg = require('../package.json');
+
+const arguments = process.argv.splice(2);
+const isDebug = arguments.includes('debug');
 
 module.exports = {
   mode: 'production',
   entry: {
-    'count-to': './src/index.js'
+    [pkg.name]: config.input
   },
   output: {
     filename: '[name].js',
@@ -19,10 +23,10 @@ module.exports = {
     extensions: ['.js', '.vue', '.json'],
     alias: config.alias
   },
-  externals: {
+  externals: isDebug ? config.externals : {
     vue: config.vue
   },
-  optimization: {
+  optimization: isDebug ? false : {
     minimize: true,
     minimizer: [
       new TerserPlugin({

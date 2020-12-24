@@ -42,15 +42,15 @@ app.use(countTo);
 
 ```javascript
 <template>
-  <countTo></countTo>
+  <count-to></count-to>
 </template>
 
 <script>
-import countTo from 'vue3-count-to';
+import { CountTo } from 'vue3-count-to';
 
 export default {
   components: {
-    countTo
+    CountTo
   }
 }
 </script>

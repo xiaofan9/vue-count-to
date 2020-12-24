@@ -43,3 +43,5 @@ exports.jsexclude = function (filepath){
 exports.output = {
   path: path.resolve(process.cwd(), './dist')
 }
+
+exports.input = path.resolve(__dirname, '../src/index.js');
