@@ -1,11 +1,19 @@
 import CountTo3 from "./count-to";
 import pkg from "../package.json";
 import { cjsToEs } from './utils';
-import Vue from "vue";
+import * as Vue from "vue";
 
 let CountTo;
 
-if (!Vue) {
+let keyList;
+
+try {
+  keyList = Object.keys(Vue) || [];
+} catch {
+  keyList = [];
+}
+
+if (keyList.length > 1) {
   CountTo = CountTo3;
 } else {
   // eslint-disable-next-line @typescript-eslint/no-var-requires

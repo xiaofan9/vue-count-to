@@ -1,6 +1,6 @@
 {
   "name": "vue3-count-to",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "vue-count-to 支持vue2、vue3版本",
   "module": "dist/vue3-count-to.esm.js",
   "main": "dist/vue3-count-to.js",
