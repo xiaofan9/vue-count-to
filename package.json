@@ -1,15 +1,12 @@
 {
   "name": "vue3-count-to",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "vue-count-to 支持vue2、vue3版本",
-  "module": "dist/vue3-count-to.esm.js",
   "main": "dist/vue3-count-to.js",
   "typings": "types/index.d.ts",
   "scripts": {
-    "build": "npm run build:lib & npm run build:esm",
-    "build:lib": "node ./build/build.js",
-    "build:debug": "node ./build/build.js debug",
-    "build:esm": "rollup --config ./build/rollup.config.js"
+    "build": "node ./build/build.js",
+    "build:debug": "node ./build/build.js debug"
   },
   "peerDependencies": {
     "vue": ">= 2 < 4"
@@ -22,10 +19,6 @@
   },
   "devDependencies": {
     "@babel/preset-env": "^7.12.10",
-    "@rollup/plugin-babel": "^5.2.2",
-    "@rollup/plugin-commonjs": "^17.0.0",
-    "@rollup/plugin-json": "^4.1.0",
-    "@rollup/plugin-node-resolve": "^11.0.1",
     "@types/webpack-env": "^1.16.0",
     "@typescript-eslint/eslint-plugin": "^4.11.0",
     "@typescript-eslint/parser": "^4.10.0",
@@ -40,10 +33,10 @@
     "babel-loader": "^8.2.2",
     "eslint": "^7.15.0",
     "eslint-plugin-vue": "^7.2.0",
+    "gulp": "^4.0.2",
+    "gulp-json-editor": "^2.5.4",
     "ora": "^5.1.0",
     "rimraf": "^3.0.2",
-    "rollup": "^2.35.1",
-    "rollup-plugin-terser": "^7.0.2",
     "terser-webpack-plugin": "^5.0.3",
     "typescript": "~4.1.3",
     "vue-loader": "^16.1.1",
