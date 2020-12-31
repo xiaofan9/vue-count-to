@@ -51,10 +51,12 @@
   },
   "author": "sifan",
   "keywords": [
+    "vue-count",
+    "vue-count-to",
+    "vue3-count-to",
     "vue",
     "component",
-    "vue-count-to",
-    "vue3-count-to"
+    "vue-component"
   ],
   "license": "MIT",
   "bugs": {
