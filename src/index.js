@@ -5,19 +5,15 @@ import * as Vue from "vue";
 
 let CountTo;
 
-let keyList;
-
-try {
-  keyList = Object.keys(Vue) || [];
-} catch {
-  keyList = [];
-}
-
-if (keyList.length > 1) {
+if (typeof Vue !== 'function') {
   CountTo = CountTo3;
 } else {
   // eslint-disable-next-line @typescript-eslint/no-var-requires
   CountTo = cjsToEs(require("vue-count-to"))();
+}
+
+if (typeof window !== 'undefined') {
+  window.countTo = { install, version: pkg.version, CountTo };
 }
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types

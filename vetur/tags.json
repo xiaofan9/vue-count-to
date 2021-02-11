@@ -1,0 +1,6 @@
+{
+  "count-to": {
+    "attributes": ["startVal", "endVal", "duration", "autoplay", "decimals", "decimal", "separator", "prefix", "suffix", "useEasing", "easingFn"],
+    "description": "count-to is a dependency-free, lightweight vue component that can be overwrite easingFn by yourself. You can set startVal and endVal ,it will automatic judge count up or count down. It is support vue-ssr. It is learn from countUp.js"
+  }
+}

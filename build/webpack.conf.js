@@ -23,11 +23,10 @@ module.exports = {
     extensions: ['.js', '.vue', '.json'],
     alias: config.alias
   },
-  externals: isDebug ? config.externals : {
-    vue: config.vue
-  },
-  optimization: isDebug ? false : {
-    minimize: true,
+  externals: config.externals,
+  optimization: isDebug ? {
+    minimize: false,
+  } : {
     minimizer: [
       new TerserPlugin({
         extractComments: false,

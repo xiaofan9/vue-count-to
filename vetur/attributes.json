@@ -1,0 +1,54 @@
+{
+  "startVal": {
+    "type": "number",
+    "description": "the value you want to begin at, default: 0",
+    "default": 0
+  },
+  "endVal": {
+    "type": "number",
+    "description": "the value you want to arrive at, default: 2017",
+    "default": 2017
+  },
+  "duration": {
+    "type": "number",
+    "description": "duration in millisecond, default: 3000",
+    "default": 3000
+  },
+  "autoplay": {
+    "type": "boolean",
+    "description": "when mounted autoplay, default: true",
+    "default": true
+  },
+  "decimals": {
+    "type": "number",
+    "description": "the number of decimal places to show, default: 0",
+    "default": 0
+  },
+  "decimal": {
+    "type": "string",
+    "description": "the split decimal, default: .",
+    "default": "."
+  },
+  "separator": {
+    "type": "string",
+    "description": "the separator, default: ,",
+    "default": ","
+  },
+  "prefix": {
+    "type": "string",
+    "description": "the prefix"
+  },
+  "suffix": {
+    "type": "string",
+    "description": "the suffix"
+  },
+  "useEasing": {
+    "type": "boolean",
+    "description": "is use easing function, default: true",
+    "default": true
+  },
+  "easingFn": {
+    "type": "function",
+    "description": "the easing function"
+  }
+}

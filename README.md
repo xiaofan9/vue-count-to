@@ -2,6 +2,10 @@
 
 > 基于 vue-count-to 升级改造
 
+## 预览
+
+[在线预览](https://codepen.io/xiaofan9/pen/QWGGdKJ)
+
 ## 目的
 
 - 由于原有作者好像没打算升级版本，故而自己升级维护一下。
@@ -56,13 +60,28 @@ export default {
 </script>
 ```
 
-> * 浏览器使用
+> * 浏览器引用
 
 ```html
 <script src="https://unpkg.com/vue"></script>
 <!-- or -->
 <script src="https://unpkg.com/vue@next"></script>
 <script src="https://unpkg.com/vue3-count-to"></script>
+
+<script>
+// vue2，window 环境会默认注入vue3-count-to
+new window.Vue({
+  el: '#app',
+  template: "<count-to></count-to>"
+})
+
+// vue3
+const app = window.Vue.createApp({
+  template: "<count-to></count-to>"
+});
+
+app.use(window.countTo).mount('#app');
+</script>
 ```
 ## 文档
 

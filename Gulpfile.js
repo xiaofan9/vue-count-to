@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const { src, dest, series } = require('gulp');
 const jsonEditor = require("gulp-json-editor");
 const { Reflect } = require('core-js');
