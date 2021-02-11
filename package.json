@@ -1,6 +1,6 @@
 {
   "name": "vue3-count-to",
-  "version": "1.0.7",
+  "version": "1.0.8-beta.0",
   "description": "vue-count-to 支持vue2、vue3版本",
   "main": "dist/vue3-count-to.js",
   "typings": "types/index.d.ts",
@@ -61,6 +61,9 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/xiaofan9/vue-count-to/issues"
+  },
+  "npm": {
+    "tag": "beta"
   },
   "files": [
     "dist",
