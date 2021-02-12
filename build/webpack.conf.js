@@ -23,7 +23,9 @@ module.exports = {
     extensions: ['.js', '.vue', '.json'],
     alias: config.alias
   },
-  externals: config.externals,
+  externals: {
+    vue: config.vue
+  },
   optimization: isDebug ? {
     minimize: false,
   } : {
