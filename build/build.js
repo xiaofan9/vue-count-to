@@ -1,79 +1,136 @@
-"use strict";
-
-const ora = require("ora");
-const rm = require("rimraf");
-const path = require("path");
+/* eslint-disable */
+const vue = require("rollup-plugin-vue");
+const rollup = require("rollup");
 const chalk = require("chalk");
-const webpack = require("webpack");
-const webpackConfig = require("./webpack.conf.js");
-const merge = require("webpack-merge");
-const config = require("./config");
+const path = require("path");
+const json = require("@rollup/plugin-json");
+const { nodeResolve } = require("@rollup/plugin-node-resolve");
+const { terser } = require("rollup-plugin-terser");
+const { default: babel, getBabelOutputPlugin } = require("@rollup/plugin-babel");
+const cjs = require("@rollup/plugin-commonjs");
+const pkg = require("../package.json");
+const { DEFAULT_EXTENSIONS } = require("@babel/core");
+const replace = require("@rollup/plugin-replace");
 
-let isModern = false;
-let isOnly = false;
-
-process.argv.forEach(item => {
-  if (item.includes("modern")) {
-    isModern = true;
+const deps = ["vue", ...Object.keys(Object.assign({}, pkg.dependencies))];
+const foldPath = path.resolve(__dirname, `..`);
+const input = path.resolve(foldPath, "src/index.js");
+const outputConfig = {
+  esm: {
+    format: "esm",
+    file: path.resolve(foldPath, `dist/${pkg.name}.esm.js`)
+  },
+  umd: {
+    format: "umd",
+    file: path.resolve(foldPath, `dist/${pkg.name}.min.js`),
+    name: "CountTo",
+    globals: {
+      vue: "Vue"
+    },
+    exports: "named"
   }
+};
+const arguments = process.argv.splice(2);
+const isDebug = arguments.includes('debug');
+const commonExtensions = [".ts", ".tsx", ".vue"];
 
-  if (item.includes("only")) {
-    isOnly = true;
-  }
-});
+const runBuild = async () => {
+  const outputKeyList = Object.keys(outputConfig);
+  let index = 0;
 
-let spinner;
+  build(outputKeyList[index]);
 
-function logStart(str = "") {
-  spinner = ora(`Building ${str}bundle for production...`);
+  async function build(name) {
+    if (!name) return;
+    const extTerserOpt =
+      name === "esm"
+        ? {
+            compress: {
+              pure_getters: true
+            },
+            ecma: 2015
+          }
+        : {};
 
-  spinner.start();
-}
-
-function build(webpackConfig, str) {
-  return new Promise(function (resolve, reject) {
-    logStart(str);
-
-    webpack(webpackConfig, function (err, stats) {
-      spinner.stop();
-      if (err) {
-        process.exit(1);
-
-        throw err;
+    const extPlugins = [
+      ...(isDebug ? [] : [terser(
+        Object.assign(
+          {
+            mangle: false,
+            toplevel: true,
+            safari10: true,
+            format: {
+              comments: false,
+            },
+          },
+          extTerserOpt
+        )
+      )]),
+      ...(name === "esm" ? [] : [
+        cjs({
+          // 开启混合模式转换
+          transformMixedEsModules: true,
+          sourceMap: true
+        }),
+      ])
+    ];
+    const outOptions = Object.assign(
+      outputConfig[name],
+      {
+        sourcemap: true
       }
-
-      if (stats.hasErrors()) {
-        console.log(stats.toString({
-          colors: true
-        }));
-
-        console.log(chalk.red("\nBuild failed with errors.\n"));
-
-        process.exit(1);
+    );
+    const inputOptions = {
+      input,
+      plugins: [
+        replace({
+          "process.env.NODE_ENV": JSON.stringify("production"),
+          preventAssignment: true
+        }),
+        nodeResolve({
+          extensions: [".mjs", ".js", ".json", ".node", ...commonExtensions]
+        }),
+        json(),
+        vue(),
+        // cjs({
+        //   // 开启混合模式转换
+        //   transformMixedEsModules: true,
+        //   sourceMap: true
+        // }),
+        ...extPlugins,
+        babel({
+          babelHelpers: "runtime",
+          extensions: [...DEFAULT_EXTENSIONS, ...commonExtensions]
+        }),
+      ],
+      external(id) {
+        return name === "umd"
+          ? /^vue$/.test(id)
+          : deps.some(k => {
+            return new RegExp("^" + k).test(id);
+          });
       }
-      
-      resolve();
-    });
-  });
-}
+    };
 
-(async function () {
-  rm(
-    config.output.path,
-    async err => {
-      if (err) {
-        spinner.stop();
+    console.log(chalk.blue(input + " → " + outOptions.file + "..."));
 
-        process.exit(1);
-        throw err;
+    try {
+      const str = chalk.green("create " + outOptions.file + " done");
+      console.time(str);
+      const bundle = await rollup.rollup(inputOptions);
+      await bundle.generate(outOptions);
+      await bundle.write(outOptions);
+      index++;
+
+      console.timeEnd(str);
+      if (index < outputKeyList.length) {
+        await build(outputKeyList[index]);
       }
-      let startTime = Date.now();
-
-      await build(webpackConfig);
-
-      console.log(
-        chalk.green("Build complete in " + (Date.now() - startTime) + "ms.\n")
-      );
+    } catch (e) {
+      console.error(e);
+      process.exit;
     }
-  );
-})();
+  }
+};
+
+runBuild();

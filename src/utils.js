@@ -7,15 +7,6 @@ export function isObjHas(obj, prop) {
   return Object.prototype.hasOwnProperty.call(obj, prop);
 }
 
-/* define getter functions for harmony exports */
-export function defineExports(exports, definition) {
-  for (const key in definition) {
-    if (isObjHas(definition, key) && !isObjHas(exports, key)) {
-      Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
-    }
-  }
-}
-
 /* getDefaultExport function for compatibility with non-harmony modules */
 export function cjsToEs(module) {
   const getter =
@@ -26,8 +17,6 @@ export function cjsToEs(module) {
       : function() {
           return module;
         };
-
-  defineExports(getter, { a: getter });
 
   return getter;
 }

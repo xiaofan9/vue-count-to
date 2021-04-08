@@ -14,11 +14,19 @@
 
   - 当前版本同时兼容 vue2、vue3，亦能在ts下使用
 
+## 运行环境
+
+> 已经测试的运行环境，vite建议使用2.0+，webpack建议使用4.0+
+
+[vite](https://vitejs.dev/)、[webpack](https://webpack.docschina.org/)
+
 ## 安装 && 引入
 
 > * 安装
 ``` bash
 npm install vue3-count-to --save
+# 或
+yarn add vue3-count-to --save
 ```
 > * 全局注册
 

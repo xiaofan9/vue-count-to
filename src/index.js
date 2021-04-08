@@ -1,15 +1,17 @@
 import CountTo3 from "./count-to";
 import pkg from "../package.json";
-import { cjsToEs } from './utils';
 import * as Vue from "vue";
+import { cjsToEs } from "./utils";
 
 let CountTo;
 
-if (Vue?.default && (typeof Vue?.default === 'function' || Vue?.default?.version.startsWith('2.'))) {
+const keyList = Object.keys(Vue);
+
+if (keyList.length > 1 && (!keyList.includes('default') || keyList.includes('version'))) {
+  CountTo = CountTo3;
+} else {
   // eslint-disable-next-line @typescript-eslint/no-var-requires
   CountTo = cjsToEs(require("vue-count-to"))();
-} else {
-  CountTo = CountTo3;
 }
 
 if (typeof window !== 'undefined') {

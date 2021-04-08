@@ -1,5 +1,5 @@
 import { cloneDeep } from 'lodash-es';
-import CountTo from 'vue-count-to/src/vue-countTo';
+import CountTo from 'vue-count-to/src/vue-countTo.vue';
 
 const Component = cloneDeep(CountTo);
 

@@ -2,7 +2,7 @@
 const { src, dest, series } = require('gulp');
 const jsonEditor = require("gulp-json-editor");
 const { Reflect } = require('core-js');
-const { merge } = require('merge');
+const { merge } = require('lodash');
 
 const foldPath = './';
 
@@ -15,9 +15,7 @@ function package() {
         }
       };
       const tmpJson = merge(json, existJson);
-
       Reflect.deleteProperty(tmpJson, 'devDependencies');
-      tmpJson.dependencies = {};
 
       return tmpJson;
     })).pipe(dest(foldPath));
