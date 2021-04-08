@@ -26,12 +26,12 @@
   },
   "decimal": {
     "type": "string",
-    "description": "the split decimal, default: .",
+    "description": "the split decimal, default: '.'",
     "default": "."
   },
   "separator": {
     "type": "string",
-    "description": "the separator, default: ,",
+    "description": "the separator, default: ','",
     "default": ","
   },
   "prefix": {

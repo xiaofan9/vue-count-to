@@ -17,9 +17,7 @@ function package() {
       const tmpJson = merge(json, existJson);
 
       Reflect.deleteProperty(tmpJson, 'devDependencies');
-      tmpJson.dependencies = {
-        vue: tmpJson.dependencies.vue
-      };
+      tmpJson.dependencies = {};
 
       return tmpJson;
     })).pipe(dest(foldPath));

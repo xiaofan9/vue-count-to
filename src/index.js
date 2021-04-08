@@ -5,11 +5,11 @@ import * as Vue from "vue";
 
 let CountTo;
 
-if (typeof Vue !== 'function') {
-  CountTo = CountTo3;
-} else {
+if (Vue?.default && (typeof Vue?.default === 'function' || Vue?.default?.version.startsWith('2.'))) {
   // eslint-disable-next-line @typescript-eslint/no-var-requires
   CountTo = cjsToEs(require("vue-count-to"))();
+} else {
+  CountTo = CountTo3;
 }
 
 if (typeof window !== 'undefined') {

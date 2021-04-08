@@ -1,12 +1,9 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import { App, PluginFunction } from "vue";
+import Vue, { App, PluginFunction } from "vue";
 
-export declare class CountTo {
-  static install (app: App): void;
-  static install (app: PluginFunction<never>): void;
-
-  version: string;
+// @ts-ignore
+export declare class CountTo extends Vue {
   startVal: number;
   endVal: number;
   duration: number;
@@ -25,4 +22,9 @@ export declare class CountTo {
   reset(): void;
 }
 
-export default CountTo;
+export default class {
+  static install (app: App): void;
+  static install (app: PluginFunction<never>): void;
+
+  version: string;
+}
