@@ -1,6 +1,6 @@
 {
   "name": "vue3-count-to",
-  "version": "1.0.10-beta.01",
+  "version": "1.0.10-beta.02",
   "description": "vue-count-to 支持vue2、vue3版本",
   "main": "dist/vue3-count-to.min.js",
   "module": "dist/vue3-count-to.esm.js",
@@ -73,5 +73,5 @@
     "attributes": "vetur/attributes.json"
   },
   "homepage": "https://github.com/xiaofan9/vue-count-to#readme",
-  "unpkg": "dist/vue3-count-to.js"
+  "unpkg": "dist/vue3-count-to.min.js"
 }
