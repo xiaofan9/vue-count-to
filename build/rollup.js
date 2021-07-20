@@ -11,28 +11,31 @@ const cjs = require("@rollup/plugin-commonjs");
 const pkg = require("../package.json");
 const { DEFAULT_EXTENSIONS } = require("@babel/core");
 const replace = require("@rollup/plugin-replace");
+const config = require("./config");
 
 const deps = ["vue", ...Object.keys(Object.assign({}, pkg.dependencies))];
-const foldPath = path.resolve(__dirname, `..`);
-const input = path.resolve(foldPath, "src/index.js");
+const input = config.input;
 const outputConfig = {
   esm: {
     format: "esm",
-    file: path.resolve(foldPath, `dist/${pkg.name}.esm.js`)
-  },
-  umd: {
+    file: path.resolve(config.output.path, `${pkg.name}.esm.js`)
+  }
+};
+const arguments = process.argv.splice(2);
+const isDebug = arguments.includes('debug');
+const commonExtensions = [".ts", ".tsx", ".vue"];
+
+if(isDebug) {
+  outputConfig.umd = {
     format: "umd",
-    file: path.resolve(foldPath, `dist/${pkg.name}.min.js`),
+    file: path.resolve(config.output.path, `${pkg.name}.min.js`),
     name: "CountTo",
     globals: {
       vue: "Vue"
     },
     exports: "named"
   }
-};
-const arguments = process.argv.splice(2);
-const isDebug = arguments.includes('debug');
-const commonExtensions = [".ts", ".tsx", ".vue"];
+}
 
 const runBuild = async () => {
   const outputKeyList = Object.keys(outputConfig);
@@ -92,11 +95,6 @@ const runBuild = async () => {
         }),
         json(),
         vue(),
-        // cjs({
-        //   // 开启混合模式转换
-        //   transformMixedEsModules: true,
-        //   sourceMap: true
-        // }),
         ...extPlugins,
         babel({
           babelHelpers: "runtime",
