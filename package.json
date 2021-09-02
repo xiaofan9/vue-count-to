@@ -1,6 +1,6 @@
 {
   "name": "vue3-count-to",
-  "version": "1.0.10",
+  "version": "1.0.11.beta-01",
   "description": "vue-count-to 支持vue2、vue3版本",
   "main": "dist/vue3-count-to.min.js",
   "module": "dist/vue3-count-to.esm.js",
@@ -16,7 +16,6 @@
   },
   "dependencies": {
     "core-js": "^3.8.1",
-    "lodash-es": "^4.17.15",
     "vue-count-to": "^1.0.13"
   },
   "devDependencies": {
