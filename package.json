@@ -1,7 +1,7 @@
 {
   "name": "vue-count-to-ts",
-  "version": "1.0.0-beta.1",
-  "description": "vue-count-to 支持vue2、vue3版本",
+  "version": "1.0.0",
+  "description": "vue-count-to vue2-ts版本",
   "main": "dist/vue-count-to-ts.min.js",
   "module": "dist/vue-count-to-ts.esm.js",
   "typings": "types/index.d.ts",
