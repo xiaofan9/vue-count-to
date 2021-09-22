@@ -1,5 +1,5 @@
 const path = require('path');
-const { VueLoaderPlugin } = require('vue-loader');
+// const { VueLoaderPlugin } = require('vue-loader');
 const TerserPlugin = require('terser-webpack-plugin');
 const config = require('./config');
 const pkg = require('../package.json');
@@ -50,18 +50,18 @@ module.exports = {
         exclude: config.jsexclude,
         loader: 'babel-loader'
       },
-      {
-        test: /\.vue$/,
-        loader: 'vue-loader',
-        options: {
-          compilerOptions: {
-            preserveWhitespace: false
-          }
-        }
-      },
+      // {
+      //   test: /\.vue$/,
+      //   loader: 'vue-loader',
+      //   options: {
+      //     compilerOptions: {
+      //       preserveWhitespace: false
+      //     }
+      //   }
+      // },
     ]
   },
-  plugins: [
-    new VueLoaderPlugin()
-  ]
+  // plugins: [
+  //   new VueLoaderPlugin()
+  // ]
 };

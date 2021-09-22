@@ -94,7 +94,7 @@ const runBuild = async () => {
           extensions: [".mjs", ".js", ".json", ".node", ...commonExtensions]
         }),
         json(),
-        vue(),
+        // vue(),
         ...extPlugins,
         babel({
           babelHelpers: "runtime",
