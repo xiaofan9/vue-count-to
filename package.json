@@ -1,7 +1,7 @@
 {
   "name": "vue3-count-to",
-  "version": "1.0.12-beta.1",
-  "description": "vue-count-to 支持vue2、vue3版本",
+  "version": "1.1.0-beta.1",
+  "description": "vue-count-to vue3版本",
   "main": "dist/vue3-count-to.min.js",
   "module": "dist/vue3-count-to.esm.js",
   "typings": "types/index.d.ts",
@@ -12,7 +12,7 @@
     "build:debug": "node ./build/rollup.js debug"
   },
   "peerDependencies": {
-    "vue": ">= 2 < 4"
+    "vue": ">= 3 < 4"
   },
   "dependencies": {
     "core-js": "^3.8.1",

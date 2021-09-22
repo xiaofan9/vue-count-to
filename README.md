@@ -12,7 +12,14 @@
 
 ## 兼容
 
-  - 当前版本同时兼容 vue2、vue3，亦能在ts下使用
+- v1.1.x 仅支持vue3；
+- v1.0.x 同时兼容 vue2、vue3，亦能在ts下使用（可能存在ts识别不太对的问题）
+
+## 版本
+
+如果需要 vue2-ts 版本，请使用 [vue-count-to-ts](https://npmjs.org/package/vue-count-to-ts) 包；
+
+如果仅需要vue2版本，请直接使用 [vue-count-to](https://npmjs.org/package/vue-count-to) 包
 
 ## 运行环境
 
@@ -22,25 +29,19 @@
 
 ## 安装 && 引入
 
-> * 安装
+> 安装
+
 ``` bash
 npm install vue3-count-to --save
 # 或
 yarn add vue3-count-to --save
 ```
-> * 全局注册
+
+> 全局注册
 
 ```javascript
 import countTo from 'vue3-count-to';
 ```
-
-使用 Vue 2:
-
-```javascript
-Vue.use(countTo);
-```
-
-使用 Vue 3:
 
 ```javascript
 import { createApp } from 'vue';
@@ -50,7 +51,7 @@ const app = createApp(...);
 app.use(countTo);
 ```
 
-局部引入
+> 局部引入
 
 ```javascript
 <template>
@@ -68,29 +69,25 @@ export default {
 </script>
 ```
 
-> * 浏览器引用
+> 浏览器引用
 
 ```html
-<script src="https://unpkg.com/vue"></script>
-<!-- or -->
 <script src="https://unpkg.com/vue@next"></script>
 <script src="https://unpkg.com/vue3-count-to"></script>
 
-<script>
-// vue2，window 环境会默认注入vue3-count-to
-new window.Vue({
-  el: '#app',
-  template: "<count-to></count-to>"
-})
+<body>
+  <div id="app">
+    <count-to></count-to>
+  </div>
+</body>
 
-// vue3
-const app = window.Vue.createApp({
-  template: "<count-to></count-to>"
-});
+<script>
+const app = window.Vue.createApp();
 
 app.use(window.countTo).mount('#app');
 </script>
 ```
+
 ## 文档
 
 参看 [vue-count-to](https://github.com/PanJiaChen/vue-countTo) 文档。
