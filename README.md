@@ -17,7 +17,7 @@
 
 ## 版本
 
-如果需要 vue2-ts 版本，请使用 [vue-count-to-ts](https://npmjs.org/package/vue-count-to-ts) 包；
+如果需要vue2-ts版本，请使用 [vue-count-to-ts](https://npmjs.org/package/vue-count-to-ts) 包；
 
 如果仅需要vue2版本，请直接使用 [vue-count-to](https://npmjs.org/package/vue-count-to) 包
 
