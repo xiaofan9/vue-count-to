@@ -6,10 +6,10 @@ export declare class CountTo extends Vue {
   duration: number;
   autoplay: boolean;
   decimals: number;
-  decimal: number;
-  separator: number;
-  prefix: number;
-  suffix: number;
+  decimal: string;
+  separator: string;
+  prefix: string;
+  suffix: string;
   useEasing: boolean;
 
   easingFn: (progress: number, localStartVal: number, intervalVal: number, localDuration: number) => number;
