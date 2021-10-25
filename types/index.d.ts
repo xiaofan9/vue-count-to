@@ -1,15 +1,15 @@
-import type { App } from "vue";
+import type { App, DefineComponent } from "vue";
 
-type Component = import("vue").DefineComponent<{
+type Component = DefineComponent<{
   startVal: number;
   endVal: number;
   duration: number;
   autoplay: boolean;
   decimals: number;
-  decimal: number;
-  separator: number;
-  prefix: number;
-  suffix: number;
+  decimal: string;
+  separator: string;
+  prefix: string;
+  suffix: string;
   useEasing: boolean;
 
   easingFn: (progress: number, localStartVal: number, intervalVal: number, localDuration: number) => number;
