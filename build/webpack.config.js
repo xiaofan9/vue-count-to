@@ -49,16 +49,7 @@ module.exports = {
         include: process.cwd(),
         exclude: config.jsexclude,
         loader: 'babel-loader'
-      },
-      // {
-      //   test: /\.vue$/,
-      //   loader: 'vue-loader',
-      //   options: {
-      //     compilerOptions: {
-      //       preserveWhitespace: false
-      //     }
-      //   }
-      // },
+      }
     ]
   },
   // plugins: [
