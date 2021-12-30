@@ -1,6 +1,6 @@
 {
   "name": "vue-count-to-ts",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "vue-count-to vue2-ts版本",
   "main": "dist/vue-count-to-ts.min.js",
   "module": "dist/vue-count-to-ts.esm.js",
